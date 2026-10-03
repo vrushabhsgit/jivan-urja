@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export default function PageBanner({title,description,eyebrow}:{title:string;description?:string;eyebrow?:string}){return <section className="page-banner"><div className="container"><div className="breadcrumbs"><Link href="/">Home</Link><span>/</span><span>{eyebrow||title}</span></div>{eyebrow&&<span className="eyebrow">{eyebrow}</span>}<h1>{title}</h1>{description&&<p>{description}</p>}</div></section>}

@@ -1,0 +1,45 @@
+/* Gentle, finite motion. No scroll hijacking or perpetual movement. */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes image-in {
+  from { opacity: 0; transform: scale(1.025); }
+  to { opacity: 1; transform: scale(1); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-copy > * { animation: rise-in .85s cubic-bezier(.22,1,.36,1) both; }
+  .hero-copy > :nth-child(2) { animation-delay: .08s; }
+  .hero-copy > :nth-child(3) { animation-delay: .16s; }
+  .hero-copy > :nth-child(4) { animation-delay: .22s; }
+  .hero-copy > :nth-child(5) { animation-delay: .28s; }
+  .hero-copy > :nth-child(6) { animation-delay: .34s; }
+  .hero-image { animation: image-in 1.2s cubic-bezier(.22,1,.36,1) both; }
+  .hero-note { animation: rise-in .9s .4s cubic-bezier(.22,1,.36,1) both; }
+  .page-banner h1, .page-banner p { animation: rise-in .8s cubic-bezier(.22,1,.36,1) both; }
+  .page-banner p { animation-delay: .12s; }
+  .navigation.is-open { animation: rise-in .3s ease-out both; }
+  .faq[open] > p { animation: rise-in .35s ease-out both; }
+}
+.hero-image { filter: none; object-position: center 55%; }
+.image-label { text-shadow: 0 1px 8px #173f35aa; }
+.intro-photo > img, .care-image img { transition: transform .8s cubic-bezier(.22,1,.36,1), filter .8s ease; }
+.care-image { overflow: hidden; }
+.care-image img { object-position: center; }
+.story, .doctor-card, .credentials > div { transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease; }
+.button { transition: background .25s ease, transform .25s ease, box-shadow .25s ease; }
+.text-link { transition: color .25s ease, border-color .25s ease; }
+.feature-icon { transition: background .35s ease, transform .35s ease; }
+.faq summary svg { transition: transform .3s ease; }
+.form-grid input, .form-grid select, .form-grid textarea { transition: border-color .2s ease, box-shadow .2s ease; }
+.form-grid input:focus, .form-grid select:focus, .form-grid textarea:focus { border-color: #6b855b; box-shadow: 0 0 0 3px #6b855b18; }
+@media (hover:hover) and (prefers-reduced-motion: no-preference) {
+  .care-card:hover .care-image img { transform: scale(1.035); }
+  .story:hover, .doctor-card:hover { transform: translateY(-5px); border-color: #b5c3a5; box-shadow: 0 14px 35px #173f350a; }
+  .difference-grid article:hover .feature-icon { transform: translateY(-3px) rotate(-5deg); background: #e3e9d5; }
+  .button:hover { box-shadow: 0 6px 18px #173f3514; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
